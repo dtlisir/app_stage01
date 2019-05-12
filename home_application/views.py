@@ -7,9 +7,9 @@ from django.http import JsonResponse
 # 装饰器引入 from blueapps.account.decorators import login_exempt
 def test01(request):
     """
-    首页
+    实验一 首页
     """
-    return render(request, 'home_application/home.html')
+    return render(request, 'home_application/test01.html')
 
 
 def test02(request):
@@ -31,3 +31,10 @@ def get_message(request):
 
     result = {'result': True, 'data': data}
     return JsonResponse(result)
+
+
+def test03(request):
+    """
+    实验三
+    """
+    return render(request, 'home_application/test03.html')
