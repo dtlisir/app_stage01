@@ -12,104 +12,96 @@
 {% endblock %}
 
 {% block content %}
-<div class="king-page-box">
-    <div class="king-container clearfix">
-        <div class="king-block king-block-bordered king-block-themed mb0">
-            <div class="king-block-header king-info">
-                <ul class="king-block-options">
-                    <li>
-                        <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
-                    </li>
-                </ul>
-                <h3 class="king-block-title">信息录入</h3>
-            </div>
-            <div class="king-block-content">
-                <form class="form-horizontal">
-                    <div class="form-group clearfix ">
-                        <label class="col-sm-3 control-label bk-lh30 pt0">主机IP：</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control bk-valign-top" id=""
-                                   placeholder="请输入IP信息，格式为XXX.XXX.XXX.XXX"></div>
-                    </div>
-                    <div class="form-group clearfix ">
-                        <label class="col-sm-3 control-label bk-lh30 pt0">主机系统：</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control bk-valign-top" id=""
-                                   placeholder="请输入主机的操作系统，如WINDOWS、LINUX、UNIX等"></div>
-                    </div>
-                    <div class="form-group clearfix ">
-                        <label class="col-sm-3 control-label bk-lh30 pt0">磁盘分区：</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control bk-valign-top" id=""
-                                   placeholder="请输入磁盘分区信息，如LINUX可选择根分区，WINDOWS可选择C盘"></div>
-                    </div>
-                    <div class="form-group clearfix">
-                        <div class="col-sm-9 col-sm-offset-3">
-                            <button type="button" class="king-btn mr10  king-success">提交</button>
-                            <button type="button" class="king-btn king-default ">取消</button>
+    <div class="king-page-box">
+        <div class="king-container clearfix">
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <ul class="king-block-options">
+                        <li>
+                            <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
+                        </li>
+                    </ul>
+                    <h3 class="king-block-title">信息录入</h3>
+                </div>
+                <div class="king-block-content">
+                    <form class="form-horizontal">
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">主机IP：</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="host_ip"
+                                       placeholder="请输入IP信息，格式为XXX.XXX.XXX.XXX"></div>
                         </div>
-                    </div>
-                </form>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">主机系统：</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="host_os"
+                                       placeholder="请输入主机的操作系统，如WINDOWS、LINUX、UNIX等"></div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">磁盘分区：</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control bk-valign-top" id="host_partition"
+                                       placeholder="请输入磁盘分区信息，如LINUX可选择根分区，WINDOWS可选择C盘"></div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <button type="button" class="king-btn mr10  king-success" onclick="save_record()">提交
+                                </button>
+                                <button type="button" class="king-btn king-default " onclick="clear_record()">取消
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="king-block king-block-bordered king-block-themed mb0">
-            <div class="king-block-header king-info">
-                <ul class="king-block-options">
-                    <li>
-                        <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
-                    </li>
-                </ul>
-                <h3 class="king-block-title">信息展示</h3>
-            </div>
-            <div class="king-block-content">
-                <table class="table mb0 pr15 ranger-box ">
-                    <thead>
-                    <tr>
-                        <th style="width: 100px;">#</th>
-                        <th style="width: 20%;">任务</th>
-                        <th style="width: 20%;">进度</th>
-                        <th style="width: 20%;">开发者</th>
-                        <th>结束时间</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td style="width: 100px;">1</td>
-                        <td style="width: 20%;">版本更新</td>
-                        <td style="width: 20%;">完成</td>
-                        <td style="width: 20%;">管理员</td>
-                        <td>2015-09-20</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <!-- 设置面板Start -->
-                <template id="header_tpl_1557651198969">
-                    <tr>
-                        <th style="width: 100px;">#index#</th>
-                        <th style="width: 20%;">#task#</th>
-                        <th style="width: 20%;">#progress#</th>
-                        <th style="width: 20%;">#host#</th>
-                        <th>#date#</th>
-                    </tr>
-                </template>
-                <template id="tpl_1557651198969">
-                    <tr>
-                        <td style="width: 100px;">#index#</td>
-                        <td style="width: 20%;">#columnName1#</td>
-                        <td style="width: 20%;">#columnName2#</td>
-                        <td style="width: 20%;">#columnName3#</td>
-                        <td>#columnName4#</td>
-                    </tr>
-                </template>
-                <!-- 设置面板End -->
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <ul class="king-block-options">
+                        <li>
+                            <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
+                        </li>
+                    </ul>
+                    <h3 class="king-block-title">信息展示</h3>
+                </div>
+                <div class="king-block-content" id="list_1526104329322">
+                    <table class="table mb0 pr15 ranger-box ">
+                        <thead>
+                        <tr>
+                            <th style="width: 5%;">#</th>
+                            <th style="width: 15%;">主机IP</th>
+                            <th style="width: 15%;">主机系统</th>
+                            <th style="width: 15%;">磁盘分区</th>
+                            <th style="width: 15%;">录入时间</th>
+                            <th style="width: 15%;">录入人</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <!-- 设置面板Start -->
+                    <template id="ranger_nodata_tpl">
+                        <tr>
+                            <td colspan="3"> 没有数据</td>
+                        </tr>
+                    </template>
+                    <template id="ranger_tpl">
+                        <tr>
+                            <td style="width: 5%;">#index#</td>
+                            <td style="width: 15%;">#host_ip#</td>
+                            <td style="width: 15%;">#host_os#</td>
+                            <td style="width: 15%;">#host_partition#</td>
+                            <td style="width: 15%;">#record_time#</td>
+                            <td style="width: 15%;">#operator#</td>
+                        </tr>
+                    </template>
+                    <!-- 设置面板End -->
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 {% block extra_block %}
-<script>
-    $(function () {
+    <script>
         function renderTpl(str, cfg) {
             var re = /(#(.+?)#)/g;
 
@@ -122,23 +114,78 @@
             });
         }
 
-        // 异步请求后台数据
-        $.ajax({
-            url: 'https://magicbox.bk.tencent.com/static_api/v3/components/table6/data.json',
-            type: 'GET',
-            success: function (res) {
-                var _html = ' ';
-                var list = res.items;
-                var tpl = $('#tpl_1557651198969').html();
-                var headerTpl = $('#header_tpl_1557651198969').html();
-                for (var i = 0, len = list.length; i < len; i++) {
-                    var item = list[i];
-                    _html += renderTpl(tpl, item)
+        function initRanger(conf) {
+            $.ajax({
+                url: conf.url,
+                type: 'GET',
+                dataType: conf.dataType,
+                success: function (res) {
+                    if (res.code == 0) {
+                        var _html = ' ';
+                        var list = res.data;
+                        var tpl = $('#ranger_tpl').html();
+                        if (list.length == 0) {
+                            _html = $('#ranger_nodata_tpl').html();
+                        } else {
+                            for (var i = 0, len = list.length; i < len; i++) {
+                                var item = list[i];
+                                _html += renderTpl(tpl, item)
+                            }
+                        }
+                        $(conf.container).html(_html);
+                    }
                 }
-                $('#code_1557651198969 tbody').html(_html);
-                $('.ranger-box thead').html(renderTpl(headerTpl, res.catalogues));
+            });
+        }
+
+        //保存主机数据
+        function save_record() {
+            var host_ip = $('#host_ip').val();
+            var host_os = $('#host_os').val();
+            var host_partition = $('#host_partition').val();
+            if (host_ip == '') {
+                alert('主机IP不能为空');
+                return
             }
+            if (host_os == '') {
+                alert('主机系统不能为空');
+                return
+            }
+            if (host_partition == '') {
+                alert('磁盘分区不能为空');
+                return
+            }
+            $.post("{{ SITE_URL }}save_record/", {
+                'host_ip': host_ip,
+                'host_os': host_os,
+                'host_partition': host_partition
+            }, function (data) {
+                if (data.result) {
+                    initRanger({
+                        url: "{{ SITE_URL }}get_records/",
+                        dataType: 'json',
+                        container: '#list_1526104329322 .ranger-box tbody'
+                    });
+                } else {
+                    alert(data.message)
+                }
+            }, 'json');
+        }
+
+        function clear_record() {
+            $('#host_ip').val('');
+            $('#host_os').val('');
+            $('#host_partition').val('');
+        }
+
+        $(function () {
+            //获取主机记录
+            initRanger({
+                url: "{{ SITE_URL }}get_records/",
+                dataType: 'json',
+                container: '#list_1526104329322 .ranger-box tbody'
+            });
         });
-    });
-</script>
+
+    </script>
 {% endblock %}

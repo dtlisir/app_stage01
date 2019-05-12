@@ -22,4 +22,6 @@ urlpatterns = (
     url(r'^test02/$', views.test02),
     url(r'^test03/$', views.test03),
     url(r'^get_message/$', views.get_message),
+    url(r'^get_records/$', views.get_records),
+    url(r'^save_record/$', views.save_record),
 )
