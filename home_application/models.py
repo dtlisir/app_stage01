@@ -12,9 +12,9 @@ class HostRecordManager(models.Manager):
         try:
             HostRecord.objects.create(
                 host_ip=data.get('host_ip'),
-                host_os=data.get('content'),
+                host_os=data.get('host_os'),
                 host_partition=data.get('host_partition'),
-                operator=data.get('username'),
+                operator=data.get('operator'),
             )
             result = {'result': True, 'message': u"保存成功"}
         except Exception as e:
