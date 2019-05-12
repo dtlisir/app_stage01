@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>蓝鲸开发实验</title>
+    {{ block.super }}
+{% endblock %}
+
+{% block navigation %}
+    <li><a href="{{ SITE_URL }}"><span>实验一</span></a></li>
+    <li class="king-navbar-active"><a href="#"><span>实验二</span></a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="king-page-box">
+        <div class="king-container clearfix">
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <ul class="king-block-options">
+                        <li>
+                            <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
+                        </li>
+                    </ul>
+                    <h3 class="king-block-title">实验二</h3>
+                </div>
+                <div class="king-block-content">
+                    <form class="form-horizontal">
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">内容：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="input_message"
+                                       placeholder="请输入题目内容"></div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="button" class="king-btn mr10  king-success" onclick="get_message()">提交</button>
+                                <button type="button" class="king-btn king-default " onclick="clear_message()">取消</button>
+                            </div>
+                        </div>
+                        <div class="king-widget1  m0">
+                            <div class="king-widget2-content p25">
+                                <div class="king-counter king-counter-lg">
+                                    <span class="king-counter-number" id="show_message">显示输出</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 设置面板Start -->
+                        <!-- 设置面板End -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_block %}
+<script>
+    function clear_message() {
+        $('#input_message').val('');
+    }
+    function get_message() {
+        var input_message = $('#input_message').val();
+        $.get('{{ SITE_URL }}get_message/', {'input_message': input_message}, function (res) {
+             if(res.result){
+                 $('#show_message').text(res.data)
+             }else{
+                 alert('获取数据失败');
+             }
+        }, 'json');
+    }
+</script>
+
+{% endblock %}
