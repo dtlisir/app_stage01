@@ -24,4 +24,5 @@ urlpatterns = (
     url(r'^get_message/$', views.get_message),
     url(r'^get_records/$', views.get_records),
     url(r'^save_record/$', views.save_record),
+    url(r'^search_records/$', views.search_records),
 )

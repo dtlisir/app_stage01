@@ -76,3 +76,22 @@ def get_records(request):
         })
     return JsonResponse({'code': 0, 'data': data})
 
+
+def search_records(request):
+    """
+    通过IP查询主机记录
+    """
+    search_ip = request.GET.get('search_ip')
+    record_list = HostRecord.objects.filter(host_ip=search_ip).order_by('-id')
+    data = []
+    for index, record in enumerate(record_list):
+        data.append({
+            'index': index,
+            'host_ip': record.host_ip,
+            'host_os': record.host_os,
+            'host_partition': record.host_partition,
+            'record_time': record.record_time,
+            'operator': record.operator,
+        })
+    return JsonResponse({'code': 0, 'data': data})
+

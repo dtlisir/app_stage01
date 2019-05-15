@@ -64,6 +64,13 @@
                     <h3 class="king-block-title">信息展示</h3>
                 </div>
                 <div class="king-block-content" id="list_1526104329322">
+                    <form class="form-inline">
+                        <div class="form-group mr10">
+                            <span class="fa fa-search"></span>&nbsp;
+                            <input type="text" class="form-control" id="search_ip" placeholder="请输入要查询的IP">
+                        </div>
+                        <button type="button" class="king-btn king-success" onclick="search_records()">搜索</button>
+                    </form>
                     <table class="table mb0 pr15 ranger-box ">
                         <thead>
                         <tr>
@@ -119,6 +126,7 @@
                 url: conf.url,
                 type: 'GET',
                 dataType: conf.dataType,
+                data: conf.data,
                 success: function (res) {
                     if (res.code == 0) {
                         var _html = ' ';
@@ -164,6 +172,7 @@
                     initRanger({
                         url: "{{ SITE_URL }}get_records/",
                         dataType: 'json',
+                        data: {},
                         container: '#list_1526104329322 .ranger-box tbody'
                     });
                 } else {
@@ -178,12 +187,27 @@
             $('#host_partition').val('');
         }
 
+        function search_records() {
+            var search_ip = $('#search_ip').val();
+            if (search_ip == '') {
+                alert('搜索内容不能为空');
+                return
+            }
+            initRanger({
+                url: "{{ SITE_URL }}search_records/",
+                dataType: 'json',
+                data: {'search_ip': search_ip},
+                container: '#list_1526104329322 .ranger-box tbody'
+            });
+        }
+
         $(function () {
             //获取主机记录
             initRanger({
                 url: "{{ SITE_URL }}get_records/",
                 dataType: 'json',
-                container: '#list_1526104329322 .ranger-box tbody'
+                data: {},
+                container: '#list_1526104329322 .ranger-box tbody',
             });
         });
 
